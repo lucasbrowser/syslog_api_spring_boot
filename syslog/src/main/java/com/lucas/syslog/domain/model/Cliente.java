@@ -12,6 +12,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -21,18 +25,26 @@ import javax.persistence.Table;
 @Table(name = "cliente", schema = "public")
 public class Cliente implements Serializable {
     
+    @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = true)
     private Long id;
     
+    @NotBlank //Essa notaçãp não aceita nome nulo, vazio ou com espaço
+    @Size(max=60)
     @Column(name = "nome", nullable = true)
     private String nome;
     
+    @NotBlank 
+    @Email //Valida se o formato do email é correto
+    @Size(max=255)
     @Column(name = "email", nullable = true)
     private String email;
     
-    @Column(name = "fone", nullable = true)
+    @NotBlank 
+    @Size(max=20)
+    @Column(name = "telefone", nullable = true)
     private String telefone;
 
     public Long getId() {
