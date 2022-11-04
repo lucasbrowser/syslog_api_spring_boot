@@ -25,7 +25,6 @@ import javax.validation.constraints.Size;
 @Table(name = "cliente", schema = "public")
 public class Cliente implements Serializable {
     
-    @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = true)
@@ -44,7 +43,7 @@ public class Cliente implements Serializable {
     
     @NotBlank 
     @Size(max=20)
-    @Column(name = "telefone", nullable = true)
+    @Column(name = "fone", nullable = true)
     private String telefone;
 
     public Long getId() {
